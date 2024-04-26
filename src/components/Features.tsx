@@ -29,7 +29,7 @@ const items = [
     icon: <TipsAndUpdatesIcon />,
     title: "Computational Intelligence Projects",
     description:
-      "We used a variety of Computational Intelligence techniques to solve the problems associated with travelling through a store.",
+      "Used a variety of Computational Intelligence techniques to solve the problems associated with a robot travelling through a store.",
     imageLight: `url(${ANN})`,
     imageDark: `url(${ANN})`,
     github: "..",
@@ -38,7 +38,7 @@ const items = [
     icon: <AddTaskIcon />,
     title: "OOP Project - Talio",
     description:
-      "A project we worked on in a team of 5, where we created a task management app with Spring Boot and JavaFX.",
+      "A project I've worked on in a team of 5, where we created a task management app with Spring Boot and JavaFX.",
     imageLight: `url(${talio})`,
     imageDark: `url(${talio})`,
     github: "..",
