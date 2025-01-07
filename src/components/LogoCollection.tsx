@@ -28,9 +28,9 @@ const repoLinks = [
 ];
 
 const logoStyle = {
-  width: "100px",
-  height: "100px",
-  margin: "0 32px",
+  width: "12vmin",
+  height: "12vmin",
+  margin: "0 2vmin",
   opacity: 0.5,
   transition: "opacity 0.1s ease-in-out",
 };
