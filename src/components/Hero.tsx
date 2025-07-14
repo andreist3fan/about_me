@@ -101,13 +101,13 @@ export default function Hero() {
                             id="image"
                             sx={(theme) => ({
                                 //mt: {xs: 8, sm: 10}, // xs - extra small, sm - small (screen sizes)
-                                ml: "auto",
                                 width: "20vmin",
                                 height: "20vmin",
                                 backgroundImage: `url(${me})`,
                                 backgroundSize: "cover",
                                 borderRadius: "10vmin",
                                 outline: "1px solid",
+                                alignSelf: "center",
                                 outlineColor:
                                     theme.palette.mode === "light"
                                         ? alpha("#BFCCD9", 0.5)

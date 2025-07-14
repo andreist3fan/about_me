@@ -7,10 +7,11 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import AppAppBar from "./components/AppAppBar";
 import Hero from "./components/Hero";
 // import LogoCollection from "./components/LogoCollection";
-import Highlights from "./components/Highlights";
+// import Highlights from "./components/Highlights";
 import Projects from "./components/Projects";
 import ContactMe from "./components/ContactMe";
 import TimelineComponent from "./components/Timeline";
+import PoweredBy from "./components/PoweredBy";
 
 export default function LandingPage() {
   const [mode, setMode] = React.useState<PaletteMode>("light");
@@ -33,8 +34,9 @@ export default function LandingPage() {
         <Divider />
         <ContactMe />
         <Divider />
-        <Highlights />
-        <Divider />
+        <PoweredBy />
+        {/* <Highlights />
+        <Divider /> */}
       </Box>
     </ThemeProvider>
   );

@@ -12,8 +12,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 
 
 const contactLinks = [
-  "mailto:and21ste@gmail.com",
   "https://www.linkedin.com/in/andrei-stefan-as1/",
+  "mailto:and21ste@gmail.com",
   "tel:+40799522777",
   "https://github.com/andreist3fan",
   "https://www.facebook.com/stefandrei124",

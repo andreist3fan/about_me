@@ -15,50 +15,116 @@ import SchoolIcon from '@mui/icons-material/School';
 import talio from "../assets/talio.png";
 import edupp from "../assets/edupp.png";
 import ANN from "../assets/ANN.png";
-const items = [
+import { InputLabel, MenuItem, Select, SelectChangeEvent, FormControl } from "@mui/material";
+interface Project {
+  key: string;
+  dateFrom?: string;
+  dateTo?: string;
+  title: string;
+  location?: string;
+  content: string[];
+  image?: string;
+  tools?: string[];
+  icon?: React.ReactNode;
+  github?: string;
+}
+
+const items :Project[]= [
   {
+    key: "edupp",
+    dateFrom: "2023-01-01",
+    dateTo: "2023-06-01",
     icon: <SchoolIcon />,
     title: "Edu++",
-    description:
+    content:[
       "Edu++ is a .NET application that helps students and teachers manage their daily tasks and assignments.",
-    imageLight: `url(${edupp})`,
-    imageDark: `url(${edupp})`,
+    ],
+    image: `url(${edupp})`,
     github: "https://github.com/andreist3fan/Edu-plusplus",
+    tools: ["C#", ".NET", "Firebase"],
   },
   {
+    key: "ann",
+    dateFrom: "2023-01-01",
+    dateTo: "2023-06-01",
     icon: <TipsAndUpdatesIcon />,
     title: "Computational Intelligence Projects",
-    description:
+    content:[
       "Used a variety of Computational Intelligence techniques to solve the problems associated with a robot travelling through a store.",
-    imageLight: `url(${ANN})`,
-    imageDark: `url(${ANN})`,
-    github: "..",
+    ],
+    image: `url(${ANN})`,
+    tools: ["Python", "Neural Networks", "Genetic Algorithms"],
+    
   },
   {
+    key: "talio",
     icon: <AddTaskIcon />,
     title: "OOP Project - Talio",
-    description:
+    content: [
       "A project I've worked on in a team of 5, where we created a task management app with Spring Boot and JavaFX.",
-    imageLight: `url(${talio})`,
-    imageDark: `url(${talio})`,
-    github: "..",
+    ],
+      image: `url(${talio})`,
+    tools: ["Java", "Spring Boot", "JavaFX"],
   },
+  {
+    key: "thesis",
+    icon: <AddTaskIcon />,
+    title: "Bachelor's Thesis: Graph Leaning on Tabular Data",
+    content: [
+      "A project where I used graph learning techniques to analyze tabular data, with a focus on financial fraud detection.",
+    ],
+    image: "",
+    tools: ["Python", "Graph Learning", "Machine Learning"],
+    
+  },
+  {
+    key: "ovm",
+    icon: <AddTaskIcon />,
+    title: "Option Valuation Methods Assignments",
+    content: [
+      "A series of assignments where I implemented various option valuation methods, including Black-Scholes and Binomial models.",
+    ],
+    image: "",
+    tools: ["Python", "Financial Modelling"],
+  },
+  {
+    key: "cai",
+    icon: <AddTaskIcon />,
+    title: "Collaborative AI Assignments",
+    content: [
+      "A series of assignments where I implemented various collaborative AI systems, including a negotiating agent and trust modelling in a human-agent team.",
+    ],
+    image: "",
+    tools: ["Python", "Collaborative AI", "Multi-Agent Systems"],
+  }
+
 ];
 
 export default function Features() {
+  const [filteredItems, setFilteredItems] = React.useState(items);
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
-
+  const [filterValue, setFilterValue] = React.useState("all");
   const handleItemClick = (index: number) => {
     setSelectedItemIndex(index);
   };
+  const handleFilterChange = (event: SelectChangeEvent) => {
+    const filterV = event.target.value as string;
+    if (filterV === "all") {
+      setFilteredItems(items);
+    } else {
+      const filtered = items.filter((item) =>
+        item.tools?.includes(filterV)
+      );
+      setFilteredItems(filtered);
+      setSelectedItemIndex(0);
+    }
+    setFilterValue(filterV);
+  };
 
-  const selectedFeature = items[selectedItemIndex];
 
   return (
     <Container id="projects" sx={{ py: { xs: 8, sm: 16 } }}>
-      <Grid container spacing={6}>
-        <Grid item xs={12} md={6}>
-          <Box>
+                <Box>
             <Typography component="h2" variant="h4" color="text.primary">
               Projects
             </Typography>
@@ -70,6 +136,31 @@ export default function Features() {
               Feel free to take a look at some of the projects I have worked on:
             </Typography>
           </Box>
+     
+      <Grid container spacing={6}>
+        <Grid item xs={12} md={6}>
+ <Box sx={{ mb: 4 }}>
+
+        <Box sx={{ display: "flex", flexDirection: "row", gap: 1, mt: 1 }}>
+          <FormControl sx={{  minWidth: "50%" }}>
+
+          <InputLabel id="filter-label">Programming Languages            </InputLabel>
+
+            <Select
+            value ={filterValue}
+            label ="Programming Languages"
+            onChange={handleFilterChange}
+            >
+              <MenuItem value="all">All</MenuItem>
+              <MenuItem value="Java">Java</MenuItem>
+              <MenuItem value="C#">C#</MenuItem>
+              <MenuItem value="Python">Python</MenuItem>
+              {/* <MenuItem value="Javascript">JavaScript</MenuItem>
+              <MenuItem value="C++">C++</MenuItem> */}
+            </Select>
+            </FormControl>
+        </Box>
+      </Box>
           <Box>
           <Grid
             container
@@ -77,7 +168,7 @@ export default function Features() {
             gap={1}
             sx={{ display: { xs: "auto", sm: "none" } }}
           >
-            {items.map(({ title }, index) => (
+            {filteredItems.map(({ title }, index) => (
               <Chip
                 key={index}
                 label={title}
@@ -115,14 +206,12 @@ export default function Features() {
           >
             <Box
               sx={{
-                backgroundImage: (theme) =>
-                  theme.palette.mode === "light"
-                    ? items[selectedItemIndex].imageLight
-                    : items[selectedItemIndex].imageDark,
+                backgroundImage: filteredItems[selectedItemIndex].image,                    
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 minHeight: 280,
+
               }}
             />
             <Box sx={{ px: 2, pb: 2 }}>
@@ -131,14 +220,14 @@ export default function Features() {
                 variant="body2"
                 fontWeight="bold"
               >
-                {selectedFeature.title}
+                {filteredItems[selectedItemIndex].title}
               </Typography>
               <Typography
                 color="text.secondary"
                 variant="body2"
                 sx={{ my: 0.5 }}
               >
-                {selectedFeature.description}
+                {filteredItems[selectedItemIndex].content}
               </Typography>
               <Link
                 color="primary"
@@ -165,9 +254,11 @@ export default function Features() {
             alignItems="flex-start"
             spacing={2}
             useFlexGap
-            sx={{ width: "100%", display: { xs: "none", sm: "flex" } }}
+            sx={{ width: "100%", display: { xs: "none", sm: "flex" },
+                          maxHeight: "60vh",
+                overflowY: "auto", }}
           >
-            {items.map(({ icon, title, description }, index) => (
+            {filteredItems.map(({ icon, title, content }, index) => (
               <Card
                 key={index}
                 variant="outlined"
@@ -175,8 +266,8 @@ export default function Features() {
                 onClick={() => handleItemClick(index)}
                 sx={{
                   p: 3,
-                  height: "fit-content",
-                  width: "100%",
+                  minHeight: "150px",
+                  width: "95%",
                   background: "none",
                   backgroundColor:
                     selectedItemIndex === index ? "action.selected" : undefined,
@@ -231,7 +322,7 @@ export default function Features() {
                       variant="body2"
                       sx={{ my: 0.5 }}
                     >
-                      {description}
+                      {content}
                     </Typography>
                     <Link
                       color="primary"
@@ -249,14 +340,11 @@ export default function Features() {
                     >
                       <a
                         href={
-                          items[index].github === ".."
-                            ? ""
-                            : items[index].github
+                          filteredItems[index].github || ""
                         }
                       >
                         <span>
-                          GitHub Link{" "}
-                          {items[index].github === ".." ? "- coming soon" : " "}
+                          GitHub Link
                         </span>
                       </a>
                       <ChevronRightRoundedIcon
@@ -292,10 +380,7 @@ export default function Features() {
                 height: 500,
                 backgroundSize: "contain",
                 borderRadius: 2,
-                backgroundImage: (theme) =>
-                  theme.palette.mode === "light"
-                    ? items[selectedItemIndex].imageLight
-                    : items[selectedItemIndex].imageDark,
+                backgroundImage: filteredItems[selectedItemIndex].image,
               }}
             />
           </Card>
