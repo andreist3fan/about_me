@@ -3,7 +3,9 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-
+import PhoneIcon from '@mui/icons-material/Phone';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import me from "../assets/photo.jpeg";
 export default function Hero() {
     return (
         <Box
@@ -88,16 +90,21 @@ export default function Hero() {
                             Check out my projects and experience below, and contact me if something caught your eye.
                         </Typography>
                         </Stack>
+                    <Stack
+                        direction="column"
+                        alignSelf="center"
+                        spacing={1}
+                        useFlexGap
+                        sx={{pt: 2, width: {xs: "100%", sm: "auto"}}}
+                    >
                         <Box
                             id="image"
                             sx={(theme) => ({
                                 //mt: {xs: 8, sm: 10}, // xs - extra small, sm - small (screen sizes)
-                                ml: {xs: "auto", sm: 4},
-                                alignSelf: "right",
+                                ml: "auto",
                                 width: "20vmin",
                                 height: "20vmin",
-                                backgroundImage:
-                                    'url("https://avatars.githubusercontent.com/u/84128077?v=4")',
+                                backgroundImage: `url(${me})`,
                                 backgroundSize: "cover",
                                 borderRadius: "10vmin",
                                 outline: "1px solid",
@@ -112,6 +119,33 @@ export default function Hero() {
                                 flexShrink: 0,
                             })}
                         />
+                        <Box sx={(theme) => ({display: "flex", flexDirection: "column", alignItems: "left", border: "1px solid", borderColor: "divider", borderRadius: 1, p: 1.5,
+                            boxShadow:
+                                    theme.palette.mode === "light"
+                                        ? `0 0 12px 8px ${alpha("#9CCCFC", 0.2)}`
+                                        : `0 0 24px 12px ${alpha("#033363", 0.2)}`,
+                        })}>
+                            <Stack direction="row" spacing={1} useFlexGap>
+                                <PhoneIcon sx={{ color: "text.secondary", verticalAlign: "middle" }} />
+                                <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    >
+                                        +40799522777
+                                    </Typography>
+                            </Stack>
+                            <Stack direction="row" spacing={1} useFlexGap>
+                                <AlternateEmailIcon sx={{ color: "text.secondary", verticalAlign: "middle" }} />
+                                <Typography
+                                    variant="body2"
+                                    color="text.secondary"
+                                    >
+                                        and21ste@gmail.com
+                                    </Typography>
+                            </Stack>
+                        </Box>
+                                            </Stack>
+
                     </Stack>
                 </Stack>
             </Container>

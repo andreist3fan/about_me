@@ -8,7 +8,7 @@ import AppAppBar from "./components/AppAppBar";
 import Hero from "./components/Hero";
 // import LogoCollection from "./components/LogoCollection";
 import Highlights from "./components/Highlights";
-import Features from "./components/Features";
+import Projects from "./components/Projects";
 import ContactMe from "./components/ContactMe";
 import TimelineComponent from "./components/Timeline";
 
@@ -29,7 +29,7 @@ export default function LandingPage() {
         {/* <LogoCollection /> */}
         <TimelineComponent/>
         <Divider />
-        <Features />
+        <Projects />
         <Divider />
         <ContactMe />
         <Divider />

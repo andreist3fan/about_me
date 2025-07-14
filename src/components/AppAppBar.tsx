@@ -117,7 +117,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                 </MenuItem>
               <MenuItem
                   onClick={() => scrollToSection("timeline")}
-                  sx={{ py: "6px", px: "12px" }}
+                  sx={{ py: "6px", px: "12px", borderRadius: "4px" }}
                 >
                   <Typography variant="body2" color="text.primary">
                     Timeline
@@ -125,7 +125,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                 </MenuItem>
                 <MenuItem
                   onClick={() => scrollToSection("projects")}
-                  sx={{ py: "6px", px: "12px" }}
+                  sx={{ py: "6px", px: "12px", borderRadius: "4px" }}
                 >
                   <Typography variant="body2" color="text.primary">
                     Projects
@@ -134,7 +134,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
 
                 <MenuItem
                   onClick={() => scrollToSection("contactMe")}
-                  sx={{ py: "6px", px: "12px" }}
+                  sx={{ py: "6px", px: "12px", borderRadius: "4px" }}
                 >
                   <Typography variant="body2" color="text.primary">
                     Contact Me
@@ -143,7 +143,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
 
                 <MenuItem
                   onClick={() => scrollToSection("highlights")}
-                  sx={{ py: "6px", px: "12px" }}
+                  sx={{ py: "6px", px: "12px", borderRadius: "4px" }}
                 >
                   <Typography variant="body2" color="text.primary">
                     Highlights
@@ -192,7 +192,10 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                       toggleColorMode={toggleColorMode}
                     />
                   </Box>
-                  <MenuItem onClick={() => scrollToSection("features")}>
+                  <MenuItem onClick={() => scrollToSection("timeline")}>
+                    Timeline
+                  </MenuItem>
+                  <MenuItem onClick={() => scrollToSection("projects")}>
                     Projects
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection("contactMe")}>

@@ -11,13 +11,13 @@ import Typography from "@mui/material/Typography";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
-import CastForEducationIcon from "@mui/icons-material/CastForEducation";
+import SchoolIcon from '@mui/icons-material/School';
 import talio from "../assets/talio.png";
 import edupp from "../assets/edupp.png";
 import ANN from "../assets/ANN.png";
 const items = [
   {
-    icon: <CastForEducationIcon />,
+    icon: <SchoolIcon />,
     title: "Edu++",
     description:
       "Edu++ is a .NET application that helps students and teachers manage their daily tasks and assignments.",
@@ -55,10 +55,10 @@ export default function Features() {
   const selectedFeature = items[selectedItemIndex];
 
   return (
-    <Container id="features" sx={{ py: { xs: 8, sm: 16 } }}>
+    <Container id="projects" sx={{ py: { xs: 8, sm: 16 } }}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={6}>
-          <div>
+          <Box>
             <Typography component="h2" variant="h4" color="text.primary">
               Projects
             </Typography>
@@ -69,7 +69,8 @@ export default function Features() {
             >
               Feel free to take a look at some of the projects I have worked on:
             </Typography>
-          </div>
+          </Box>
+          <Box>
           <Grid
             container
             item
@@ -103,6 +104,7 @@ export default function Features() {
               />
             ))}
           </Grid>
+          </Box>
           <Box
             component={Card}
             variant="outlined"
