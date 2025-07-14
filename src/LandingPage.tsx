@@ -6,10 +6,11 @@ import Divider from "@mui/material/Divider";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import AppAppBar from "./components/AppAppBar";
 import Hero from "./components/Hero";
-import LogoCollection from "./components/LogoCollection";
+// import LogoCollection from "./components/LogoCollection";
 import Highlights from "./components/Highlights";
 import Features from "./components/Features";
 import ContactMe from "./components/ContactMe";
+import TimelineComponent from "./components/Timeline";
 
 export default function LandingPage() {
   const [mode, setMode] = React.useState<PaletteMode>("light");
@@ -25,7 +26,9 @@ export default function LandingPage() {
       <AppAppBar mode={mode} toggleColorMode={toggleColorMode} />
       <Hero />
       <Box sx={{ bgcolor: "background.default" }}>
-        <LogoCollection />
+        {/* <LogoCollection /> */}
+        <TimelineComponent/>
+        <Divider />
         <Features />
         <Divider />
         <ContactMe />

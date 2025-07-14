@@ -63,14 +63,31 @@ export default function Hero() {
                         useFlexGap
                         sx={{pt: 2, width: {xs: "100%", sm: "auto"}}}
                     >
+                        <Stack direction={{sm: "column"}} spacing={1} useFlexGap
+                        >
                         <Typography
                             textAlign="left"
                             color="text.secondary"
                             sx={{alignSelf: "center", width: {sm: "100%", md: "80%"}}}
                         >
-                            I'm a second-year Computer Science and Engineering student at TU
-                            Delft, passionate about exploring new skills and experiences.
+                            Freshly graduated from a Bachelor's in Computer 
+                            Science, I am a developer with a keen interest in Data Science, Machine Learning and
+                             Software Engineering. 
+
+
+                            Passions include web development, complex machine learning algorithms, and
+                            iteratively improving my skills (and my old code...). 
                         </Typography>
+                        <Typography
+                            textAlign="left"
+                            color="text.secondary"
+                            sx={{alignSelf: "center", width: {sm: "100%", md: "80%"},                             pt: 2
+}
+                        }
+                        >
+                            Check out my projects and experience below, and contact me if something caught your eye.
+                        </Typography>
+                        </Stack>
                         <Box
                             id="image"
                             sx={(theme) => ({

@@ -46,7 +46,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
           boxShadow: 0,
           bgcolor: "transparent",
           backgroundImage: "none",
-          mt: 2,
+          mt: 0,
         }}
       >
         <Container maxWidth="lg">
@@ -57,7 +57,7 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
               alignItems: "center",
               justifyContent: "space-between",
               flexShrink: 0,
-              borderRadius: "999px",
+              borderRadius: "0 0 5px 5px",
               bgcolor:
                 theme.palette.mode === "light"
                   ? "rgba(255, 255, 255, 0.4)"
@@ -88,18 +88,43 @@ function AppAppBar({ mode, toggleColorMode }: AppAppBarProps) {
                 A\s
               </Typography> */}
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <MenuItem onClick={() => {}} sx={{ py: "6px", px: "12px" }}>
-                  <Typography
-                    variant="body2"
+                <MenuItem disableRipple onClick={() => {
+                        window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+                }}     sx={{ 
+      py: "6px", 
+      px: "12px",
+      '&:hover': {
+        backgroundColor: 'transparent',
+      },
+      '&:active': {
+        backgroundColor: 'transparent',
+      },
+      '&:focus': {
+        backgroundColor: 'transparent',
+      }
+    }}>                  <Typography
+                    variant="body1"
                     color="text.primary"
                     padding-left="50px"
+                    fontWeight="bold"
+                  
                   >
                     A\s
                   </Typography>
                 </MenuItem>
-
+              <MenuItem
+                  onClick={() => scrollToSection("timeline")}
+                  sx={{ py: "6px", px: "12px" }}
+                >
+                  <Typography variant="body2" color="text.primary">
+                    Timeline
+                  </Typography>
+                </MenuItem>
                 <MenuItem
-                  onClick={() => scrollToSection("features")}
+                  onClick={() => scrollToSection("projects")}
                   sx={{ py: "6px", px: "12px" }}
                 >
                   <Typography variant="body2" color="text.primary">
