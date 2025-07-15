@@ -26,8 +26,10 @@ const timelineR: Period[] = [
     title: "BSc CSE",
     location: "TU Delft, Delft, Netherlands",
     content: [
-      "Graduated with a BSc in Computer Science and Engineering from TU Delft.",
-      "Specialized in software engineering and data science.",
+      "Graduated cum laude with a BSc in Computer Science and Engineering from TU Delft.",
+      "Specialized in Software Engineering and Data Science / Machine Learning.",
+      "Also took a minor in Finance.",
+      "Final GPA: ~8.5/10",
     ],
     //image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.publicdomainpictures.net%2Fpictures%2F180000%2Fvelka%2Fcat-1464103447LmK.jpg&f=1&nofb=1&ipt=aa707c30cc07fc5edcf6440956432e45a3b1186a114fc496ed4ebfb33caac7ff",
     markerColor: "#ff5722",
@@ -110,7 +112,7 @@ const timelineR: Period[] = [
     title: "Centre of Excellence Member",
     location: "Centrul de Excelenta, Ploiesti, Romania",
     content: [
-      "Was a student member of the Centre of Excellence in Computer Science, focused on learning high-level competitive programming concepts for olympiads.",],
+      "Was a student member of the Centre of Excellence in Computer Science, focused on learning complex competitive programming concepts for olympiads.",],
     tools: ["C++", "Competitive Programming"],
     markerColor: "#ccff00ff",
   },
@@ -173,8 +175,8 @@ const Timeline: React.FC = () => {
                         alignItems: "center",
                         justifyContent: "center",
                         display: "flex",
-                        minWidth: "50px",
-                        minHeight: "50px",
+                        minWidth: "min(7vw, 50px)",
+                        minHeight: "min(7vw, 50px)",
                                       ":hover": {
                 bgcolor: "rgba(127, 127, 127, 0.05)",
                 cursor: "pointer",
@@ -206,6 +208,7 @@ const Timeline: React.FC = () => {
                                 textAlign: "center", // Center the text
         width: "100%", 
         lineHeight: 1,
+        fontSize: "min(2vw,16px)", 
                         
                     }}>
                         {year}
@@ -236,7 +239,7 @@ const Timeline: React.FC = () => {
               bgcolor: "background.paper",
               color: "text.primary",
               p: 2,
-              width: "325px",
+              width: "min(280px, 35vw)",
               ":hover": {
                 bgcolor: "rgba(127, 127, 127, 0.05)",
                 cursor: "pointer",
@@ -249,20 +252,22 @@ const Timeline: React.FC = () => {
             }}
             
           >
-            <Typography variant="h6" component="div" gutterBottom>
+            <Typography variant="h6" component="div" gutterBottom
+              sx={{ fontSize: "min(2.5vw, 20px)"}}
+            >
               {period.title}
             </Typography>
 
             <Box sx={{ display: "flex", alignItems: "center", mb: 0.5 }}>
               <DateRangeIcon sx={{ color: "text.secondary", verticalAlign: "middle", mr: 1 }} />
-            <Typography variant="subtitle1" color="text.secondary">
+            <Typography variant="subtitle1" color="text.secondary" sx={{ fontSize: "min(1.8vw, 16px)" }}>
               {period.dateFrom} - {period.dateTo}
             </Typography>
             </Box>
               {period.location && (
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                   <LocationOnIcon sx={{ color: "text.secondary", verticalAlign: "middle" }} />
-                  <Typography variant="subtitle2" color="text.secondary">
+                  <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: "min(1.5vw, 16px)" }}>
                     {period.location}
                   </Typography>
                 </Box>
@@ -270,7 +275,7 @@ const Timeline: React.FC = () => {
             
             <Box sx={{ mt: 1 }}>
               {period.content.map((line, index) => (
-                <Typography key={index} variant="body2" color="text.primary">
+                <Typography key={index} variant="body2" color="text.primary" sx={{ fontSize: "min(2vw, 14px)" }}>
                   {line}
                 </Typography>
               ))}
@@ -287,7 +292,10 @@ const Timeline: React.FC = () => {
                     key={index}
                     label={tool}
                     size="small"
-                    sx={{ mr: 0.5, mb: 0.5 }}/>
+                    sx={{ mr: 0.5, mb: 0.5, 
+                      fontSize: "min(2vw, 14px)",
+
+                    }}/>
                   ))}
               </Box>
             )}

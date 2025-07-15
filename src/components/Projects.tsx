@@ -75,6 +75,7 @@ const items :Project[]= [
     ],
     image: "",
     tools: ["Python", "Graph Learning", "Machine Learning"],
+    github: "https://github.com/andreist3fan/CSE3000-GLTD",
     
   },
   {
@@ -86,6 +87,7 @@ const items :Project[]= [
     ],
     image: "",
     tools: ["Python", "Financial Modelling"],
+    github: "https://github.com/stars/andreist3fan/lists/option-valuation-methods",
   },
   {
     key: "cai",
@@ -96,6 +98,7 @@ const items :Project[]= [
     ],
     image: "",
     tools: ["Python", "Collaborative AI", "Multi-Agent Systems"],
+    github: "https://github.com/stars/andreist3fan/lists/collaborative-ai"
   }
 
 ];
@@ -248,16 +251,22 @@ export default function Features() {
               </Link>
             </Box>
           </Box>
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="flex-start"
-            spacing={2}
-            useFlexGap
-            sx={{ width: "100%", display: { xs: "none", sm: "flex" },
-                          maxHeight: "60vh",
-                overflowY: "auto", }}
-          >
+          <Box
+  sx={{
+    width: "100%",
+    display: { xs: "none", sm: "flex" },
+    maxHeight: "60vh",
+    overflowY: "auto",
+    pt: 19,
+  }}
+>
+  <Stack
+    direction="column"
+    justifyContent="center"
+    spacing={2}
+    useFlexGap
+    sx={{ width: "100%" }}
+  >
             {filteredItems.map(({ icon, title, content }, index) => (
               <Card
                 key={index}
@@ -357,6 +366,7 @@ export default function Features() {
               </Card>
             ))}
           </Stack>
+          </Box>
         </Grid>
         <Grid
           item
