@@ -8,7 +8,6 @@ import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import SchoolIcon from '@mui/icons-material/School';
@@ -16,6 +15,8 @@ import talio from "../assets/talio.png";
 import edupp from "../assets/edupp.png";
 import ANN from "../assets/ANN.png";
 import { InputLabel, MenuItem, Select, SelectChangeEvent, FormControl } from "@mui/material";
+import { GitHub } from "@mui/icons-material";
+import { Csharp, Firebase, Java, Python, Pytorch, Spring, Typescript } from "./Icons";
 interface Project {
   key: string;
   dateFrom?: string;
@@ -41,7 +42,7 @@ const items :Project[]= [
     ],
     image: `url(${edupp})`,
     github: "https://github.com/andreist3fan/Edu-plusplus",
-    tools: ["C#", ".NET", "Firebase"],
+    tools: ["C#", "Firebase", ".NET"],
   },
   {
     key: "ann",
@@ -74,7 +75,7 @@ const items :Project[]= [
       "A project where I used graph learning techniques to analyze tabular data, with a focus on financial fraud detection.",
     ],
     image: "",
-    tools: ["Python", "Graph Learning", "Machine Learning"],
+    tools: ["Python", "PyTorch", "Graph Learning", "Machine Learning"],
     github: "https://github.com/andreist3fan/CSE3000-GLTD",
     
   },
@@ -102,6 +103,18 @@ const items :Project[]= [
   }
 
 ];
+
+
+const toolIconDict: { [key: string]: React.ReactNode } = {
+  "C#": <Csharp height="100%" width="25px"/>,
+  "Python": <Python height="100%" width="25px" />,
+  "Java": <Java height="100%" width="25px" />,
+  "TypeScript": <Typescript  height="100%" width="25px" />,
+  "Firebase": <Firebase height="100%" width="25px"/>,
+  "Spring Boot": <Spring height="100%" width="25px" />,
+  "PyTorch": <Pytorch height="100%" width="25px" />,
+} 
+  
 
 export default function Features() {
   const [filteredItems, setFilteredItems] = React.useState(items);
@@ -218,13 +231,22 @@ export default function Features() {
               }}
             />
             <Box sx={{ px: 2, pb: 2 }}>
-              <Typography
-                color="text.primary"
-                variant="body2"
-                fontWeight="bold"
-              >
-                {filteredItems[selectedItemIndex].title}
-              </Typography>
+              <Link 
+                      href={filteredItems[selectedItemIndex].github}
+                      >
+                    <Box sx={{ display: "flex", gap: 1, py : .5, ":hover": { textDecoration: "underline" }, cursor: "pointer" }}>
+                    <Typography
+                      color="text.primary"
+                      variant="body2"
+                      fontWeight="bold"
+                    >
+                      {filteredItems[selectedItemIndex].title}
+                    </Typography>
+
+                    {filteredItems[selectedItemIndex].github || (<GitHub sx={{ ml: 1, verticalAlign: 'middle', pb: 0.5 }} />)}
+
+                    </Box>
+                    </Link>
               <Typography
                 color="text.secondary"
                 variant="body2"
@@ -232,23 +254,23 @@ export default function Features() {
               >
                 {filteredItems[selectedItemIndex].content}
               </Typography>
-              <Link
-                color="primary"
-                variant="body2"
-                fontWeight="bold"
-                sx={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  "& > svg": { transition: "0.2s" },
-                  "&:hover > svg": { transform: "translateX(2px)" },
-                }}
-              >
-                <span>GitHub Link</span>
-                <ChevronRightRoundedIcon
-                  fontSize="small"
-                  sx={{ mt: "1px", ml: "2px" }}
-                />
-              </Link>
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
+                {filteredItems[selectedItemIndex].tools?.map((tool, index) => {
+                  if (tool in toolIconDict) {
+                    return (
+                      <Box sx={{  display: "flex", minHeight: "100%", width: "30px"}} key={index}>
+                        {toolIconDict[tool]}
+                       </Box>
+                    );}
+                else return <Chip
+                    key={index}
+                    label={tool}
+                    />;
+                  
+                })}
+              </Box>
+
+              
             </Box>
           </Box>
           <Box
@@ -267,7 +289,7 @@ export default function Features() {
     useFlexGap
     sx={{ width: "100%" }}
   >
-            {filteredItems.map(({ icon, title, content }, index) => (
+            {filteredItems.map(({ title, content, tools }, index) => (
               <Card
                 key={index}
                 variant="outlined"
@@ -302,23 +324,12 @@ export default function Features() {
                     gap: 2.5,
                   }}
                 >
-                  <Box
-                    sx={{
-                      color: (theme) => {
-                        if (theme.palette.mode === "light") {
-                          return selectedItemIndex === index
-                            ? "primary.main"
-                            : "grey.300";
-                        }
-                        return selectedItemIndex === index
-                          ? "primary.main"
-                          : "grey.700";
-                      },
-                    }}
-                  >
-                    {icon}
-                  </Box>
+                  
                   <Box sx={{ textTransform: "none" }}>
+                    <Link 
+                      href={filteredItems[index].github}
+                      >
+                    <Box sx={{ display: "flex", gap: 1 }}>
                     <Typography
                       color="text.primary"
                       variant="body2"
@@ -326,6 +337,11 @@ export default function Features() {
                     >
                       {title}
                     </Typography>
+
+                    {filteredItems[index].github  && <GitHub sx={{ ml: 1, verticalAlign: 'middle', pb: 0.5 }} />}
+
+                    </Box>
+                    </Link>
                     <Typography
                       color="text.secondary"
                       variant="body2"
@@ -333,34 +349,21 @@ export default function Features() {
                     >
                       {content}
                     </Typography>
-                    <Link
-                      color="primary"
-                      variant="body2"
-                      fontWeight="bold"
-                      sx={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        "& > svg": { transition: "0.2s" },
-                        "&:hover > svg": { transform: "translateX(2px)" },
-                      }}
-                      onClick={(event) => {
-                        event.stopPropagation();
-                      }}
-                    >
-                      <a
-                        href={
-                          filteredItems[index].github || ""
-                        }
-                      >
-                        <span>
-                          GitHub Link
-                        </span>
-                      </a>
-                      <ChevronRightRoundedIcon
-                        fontSize="small"
-                        sx={{ mt: "1px", ml: "2px" }}
-                      />
-                    </Link>
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
+                {tools?.map((tool, index) => {
+                  if (tool in toolIconDict) {
+                    return (
+                      <Box sx={{  display: "flex", minHeight: "100%", width: "30px"}} key={index}>
+                        {toolIconDict[tool]}
+                       </Box>
+                    );}
+                else return <Chip
+                    key={index}
+                    label={tool}
+                    />;
+                  
+                })}
+              </Box>
                   </Box>
                 </Box>
               </Card>
@@ -386,10 +389,11 @@ export default function Features() {
             <Box
               sx={{
                 m: "auto",
-                width: 357,
-                height: 500,
-                backgroundSize: "contain",
-                borderRadius: 2,
+                width: "100%",
+                height: "100%",
+                backgroundSize: "clip",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
                 backgroundImage: filteredItems[selectedItemIndex].image,
               }}
             />

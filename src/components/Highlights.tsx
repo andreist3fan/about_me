@@ -27,25 +27,7 @@ const items = [
     title: "FIRST Tech Challenge Team Member",
     description:
       "I was a member of the FIRST Tech Challenge team Ro2D2, where we built a robot to compete in a series of challenges.",
-  },
-  // {
-  //   icon: <AutoFixHighRoundedIcon />,
-  //   title: "Innovative functionality",
-  //   description:
-  //     "Stay ahead with features that set new standards, addressing your evolving needs better than the rest.",
-  // },
-  // {
-  //   icon: <SupportAgentRoundedIcon />,
-  //   title: "Reliable support",
-  //   description:
-  //     "Count on our responsive customer support, offering assistance that goes beyond the purchase.",
-  // },
-  // {
-  //   icon: <QueryStatsRoundedIcon />,
-  //   title: "Precision in every detail",
-  //   description:
-  //     "Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.",
-  // },
+  }
 ];
 
 export default function Highlights() {
