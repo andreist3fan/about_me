@@ -243,7 +243,7 @@ export default function Features() {
                       {filteredItems[selectedItemIndex].title}
                     </Typography>
 
-                    {filteredItems[selectedItemIndex].github || (<GitHub sx={{ ml: 1, verticalAlign: 'middle', pb: 0.5 }} />)}
+                    {filteredItems[selectedItemIndex].github && (<GitHub sx={{ ml: 1, verticalAlign: 'middle', pb: 0.5 }} />)}
 
                     </Box>
                     </Link>
