@@ -6,14 +6,17 @@ import Chip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
-import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import SchoolIcon from '@mui/icons-material/School';
 import talio from "../assets/talio.png";
 import edupp from "../assets/edupp.png";
-import ANN from "../assets/ANN.png";
+import CAI from "../assets/cai.png";
+import thesis from "../assets/thesis.png";
+
+import ciagm from "../assets/ci.png";
+import ovm from "../assets/ovm.png";
 import { InputLabel, MenuItem, Select, SelectChangeEvent, FormControl } from "@mui/material";
 import { GitHub } from "@mui/icons-material";
 import { Csharp, Firebase, Java, Python, Pytorch, Spring, Typescript } from "./Icons";
@@ -53,7 +56,7 @@ const items :Project[]= [
     content:[
       "Used a variety of Computational Intelligence techniques to solve the problems associated with a robot travelling through a store.",
     ],
-    image: `url(${ANN})`,
+    image: `url(${ciagm})`,
     tools: ["Python", "Neural Networks", "Genetic Algorithms"],
     
   },
@@ -70,11 +73,11 @@ const items :Project[]= [
   {
     key: "thesis",
     icon: <AddTaskIcon />,
-    title: "Bachelor's Thesis: Graph Leaning on Tabular Data",
+    title: "Bachelor's Thesis: Graph Learning on Tabular Data",
     content: [
       "A project where I used graph learning techniques to analyze tabular data, with a focus on financial fraud detection.",
     ],
-    image: "",
+    image: `url(${thesis})`,
     tools: ["Python", "PyTorch", "Graph Learning", "Machine Learning"],
     github: "https://github.com/andreist3fan/CSE3000-GLTD",
     
@@ -86,7 +89,7 @@ const items :Project[]= [
     content: [
       "A series of assignments where I implemented various option valuation methods, including Black-Scholes and Binomial models.",
     ],
-    image: "",
+    image: `url(${ovm})`,
     tools: ["Python", "Financial Modelling"],
     github: "https://github.com/stars/andreist3fan/lists/option-valuation-methods",
   },
@@ -97,7 +100,7 @@ const items :Project[]= [
     content: [
       "A series of assignments where I implemented various collaborative AI systems, including a negotiating agent and trust modelling in a human-agent team.",
     ],
-    image: "",
+    image: `url(${CAI})`,
     tools: ["Python", "Collaborative AI", "Multi-Agent Systems"],
     github: "https://github.com/stars/andreist3fan/lists/collaborative-ai"
   }
@@ -277,17 +280,21 @@ export default function Features() {
   sx={{
     width: "100%",
     display: { xs: "none", sm: "flex" },
-    maxHeight: "60vh",
-    overflowY: "auto",
-    pt: 19,
+    height: '60vh',
   }}
 >
-  <Stack
-    direction="column"
-    justifyContent="center"
-    spacing={2}
-    useFlexGap
-    sx={{ width: "100%" }}
+  <Box  
+
+    sx={{ 
+      minHeight: "100%",
+      width: "100%",
+      overflowY: "auto",
+      display: "flex",
+      flexDirection: "column",
+      gap: 2,
+
+     }}
+
   >
             {filteredItems.map(({ title, content, tools }, index) => (
               <Card
@@ -326,10 +333,14 @@ export default function Features() {
                 >
                   
                   <Box sx={{ textTransform: "none" }}>
+                    
+                    <Box sx={{ display: "flex", gap: 1 }}>
                     <Link 
                       href={filteredItems[index].github}
                       >
-                    <Box sx={{ display: "flex", gap: 1 }}>
+                                            {filteredItems[index].github  && <GitHub sx={{verticalAlign: 'middle', pb: 0.5 }} />}
+
+                    </Link>
                     <Typography
                       color="text.primary"
                       variant="body2"
@@ -338,10 +349,8 @@ export default function Features() {
                       {title}
                     </Typography>
 
-                    {filteredItems[index].github  && <GitHub sx={{ ml: 1, verticalAlign: 'middle', pb: 0.5 }} />}
 
                     </Box>
-                    </Link>
                     <Typography
                       color="text.secondary"
                       variant="body2"
@@ -368,7 +377,7 @@ export default function Features() {
                 </Box>
               </Card>
             ))}
-          </Stack>
+          </Box>
           </Box>
         </Grid>
         <Grid
@@ -388,13 +397,14 @@ export default function Features() {
           >
             <Box
               sx={{
+                minHeight:'100%',
+                minWidth: "100%",
                 m: "auto",
-                width: "100%",
-                height: "100%",
-                backgroundSize: "clip",
+                backgroundSize: "contain",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundImage: filteredItems[selectedItemIndex].image,
+                borderRadius: "6px",
               }}
             />
           </Card>
